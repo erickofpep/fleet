@@ -3,23 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CarOwnersLoginController extends Controller
 {
     public function login(Request $request){
 
-   if( empty($request->driver_phone_number) || $request->driver_phone_number=='' ){
+    $checkIfLoginDetailsExist = DB::table('users')->where('email', $request->email)->where('password', $request->password)->first();
+
+   if( empty($request->email) || $request->email=='' ){
     return json_encode([
         '101'=>'error',
-        'message'=>'Phone number is required'
+        'message'=>'email is required'
     ], JSON_PRETTY_PRINT);
 
     }
-    elseif(DB::table('users')->where('phone_number', $request->driver_phone_number)->first()->count() == 0){
+    elseif( empty($request->email) || $request->email=='' ){
+        return json_encode([
+            '101'=>'error',
+            'message'=>'invalid email'
+        ], JSON_PRETTY_PRINT);
+
+    }
+    elseif (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
 
         return json_encode([
             '101'=>'error',
-            'message'=>'Phone number is required'
+            'message'=>'Invalid email format'
+        ], JSON_PRETTY_PRINT);
+
+    }
+    elseif( empty($request->password) || $request->password =='' ){
+    return json_encode([
+        '101'=>'error',
+        'message'=>'password is required'
+    ], JSON_PRETTY_PRINT);
+
+    }
+    elseif(!$checkIfLoginDetailsExist){
+
+        return json_encode([
+            '101'=>'error',
+            'message'=>'login details not found'
         ], JSON_PRETTY_PRINT);
 
     }
@@ -32,8 +57,6 @@ class CarOwnersLoginController extends Controller
 
     }
 
-
    }
-
 
 }
