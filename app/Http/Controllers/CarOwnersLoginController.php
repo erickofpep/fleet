@@ -8,7 +8,7 @@ class CarOwnersLoginController extends Controller
 {
     public function login(Request $request){
 
-   if( empty($request->driver_phone_number) ||  $request->driver_phone_number ){
+   if( empty($request->driver_phone_number) || $request->driver_phone_number=='' ){
     return json_encode([
         '101'=>'error',
         'message'=>'Phone number is required'
