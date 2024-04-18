@@ -9,7 +9,8 @@ class CarOwnersLoginController extends Controller
 {
     public function login(Request $request){
 
-    $checkIfLoginDetailsExist = DB::table('users')->where('email', $request->email)->where('password', $request->password)->first();
+$checkIfLoginDetailsExist = DB::table('users')->where('email', $request->email)->where('password', $request->password)->first();
+
 
    if( empty($request->email) || $request->email=='' ){
     return json_encode([
@@ -52,7 +53,8 @@ class CarOwnersLoginController extends Controller
 
     return json_encode([
         '200'=>'success',
-        'message'=>'Login Successful'
+        'message'=>'Login Successful',
+        'client_id'=>$checkIfLoginDetailsExist->id
     ], JSON_PRETTY_PRINT);
 
     }
