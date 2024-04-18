@@ -14,8 +14,8 @@ use App\Http\Controllers\CarOwnersLoginController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('/login',
-    [App\Http\Controllers\CarOwnersLoginController::class, 'login']);
+Route::post('/carowners_login',
+    [App\Http\Controllers\CarOwnersLoginController::class, 'login'])->name('carowners_login');
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
