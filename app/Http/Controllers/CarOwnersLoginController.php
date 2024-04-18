@@ -13,14 +13,14 @@ class CarOwnersLoginController extends Controller
 
    if( empty($request->email) || $request->email=='' ){
     return json_encode([
-        '101'=>'error',
+        '500'=>'error',
         'message'=>'email is required'
     ], JSON_PRETTY_PRINT);
 
     }
     elseif( empty($request->email) || $request->email=='' ){
         return json_encode([
-            '101'=>'error',
+            '500'=>'error',
             'message'=>'invalid email'
         ], JSON_PRETTY_PRINT);
 
@@ -28,14 +28,14 @@ class CarOwnersLoginController extends Controller
     elseif (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
 
         return json_encode([
-            '101'=>'error',
+            '500'=>'error',
             'message'=>'Invalid email format'
         ], JSON_PRETTY_PRINT);
 
     }
     elseif( empty($request->password) || $request->password =='' ){
     return json_encode([
-        '101'=>'error',
+        '500'=>'error',
         'message'=>'password is required'
     ], JSON_PRETTY_PRINT);
 
@@ -43,7 +43,7 @@ class CarOwnersLoginController extends Controller
     elseif(!$checkIfLoginDetailsExist){
 
         return json_encode([
-            '101'=>'error',
+            '500'=>'error',
             'message'=>'login details not found'
         ], JSON_PRETTY_PRINT);
 
