@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bids', function (Blueprint $table) {
-            $table->id();
+            $table->id()->primary()->autoIncrement();;
             $table->integer('driver_id');
             $table->integer('vehicle_id');
             $table->string('bid_status')->nullable();

@@ -11,9 +11,9 @@ class BidsController extends Controller
 
         $Expected_States = array("accepted", "declined");
 
-        $checkIfDriverIDExist = DB::table('drivers')->where('id', $request->driver_id)->first();
+        $checkIfDriverIDExist = DB::table('driver')->where('id', $request->driver_id)->first();
 
-        $checkIfCarIDExist = DB::table('vehicles')->where('id', $request->vehicle_id)->first();
+        $checkIfCarIDExist = DB::table('vehicle')->where('id', $request->vehicle_id)->first();
 
         if( empty($request->driver_id) || $request->driver_id=='' ){
             return json_encode([
