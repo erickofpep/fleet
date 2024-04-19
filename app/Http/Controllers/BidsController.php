@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bids;
 use Illuminate\Http\Request;
 
 class BidsController extends Controller
@@ -45,6 +46,12 @@ class BidsController extends Controller
 
             }
             else{
+
+                $userComment = new Bids();
+                $userComment->name = $request->input('driver_id');
+                $userComment->email = $request->input('vehicle_id');
+                $userComment->message = $request->input('bid_status');
+                $userComment->save();
 
                 return json_encode([
                     '200'=>'success',
