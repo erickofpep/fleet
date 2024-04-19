@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bids;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BidsController extends Controller
 {
