@@ -22,5 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/carowners_login',
     [App\Http\Controllers\CarOwnersLoginController::class, 'login'])->name('carowners_login');
 
-Route::post('/driver_bid',
-    [App\Http\Controllers\BidsController::class, 'bids'])->name('driver_bid');
+Route::post('/bid',
+    [App\Http\Controllers\BidsController::class, 'bids'])->name('bid');
