@@ -28,6 +28,22 @@ class BidsController extends Controller
                 ], JSON_PRETTY_PRINT);
 
             }
+            elseif(!$checkIfDriverIDExist){
+
+                return json_encode([
+                    '500'=>'error',
+                    'message'=>'driver_id not found'
+                ], JSON_PRETTY_PRINT);
+
+            }
+            elseif(!$checkIfCarIDExist){
+
+                return json_encode([
+                    '500'=>'error',
+                    'message'=>'vehicle_id not found'
+                ], JSON_PRETTY_PRINT);
+
+            }
             else{
 
                 return json_encode([
